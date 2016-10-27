@@ -20,15 +20,16 @@ import rashjz.info.com.az.entity.Category;
  * @author Azik
  */
 @Repository
-public class CategoryDaoImpl extends AbstractDao<Integer, Category> implements Serializable,  CategoryDao{
+public class CategoryDaoImpl extends AbstractDao<Integer, Category> implements Serializable, CategoryDao {
 
     private static final Logger LOG = Logger.getLogger(CategoryDaoImpl.class.getName());
+
     @Override
     public void saveCategory(Category category) {
-        LOG.info("save category : "+category.toString());
-        
+        LOG.info("save category : " + category.toString());
+
         super.persist(category);
-        
+
     }
 
     @Override
@@ -39,17 +40,18 @@ public class CategoryDaoImpl extends AbstractDao<Integer, Category> implements S
     @Override
     public void deleteCategory(Category category) {
         category.setStatus("d");
-       super.update(category);
+        super.update(category);
     }
 
     @Override
     public List<Category> getAllCategorys() {
-        Criteria criteria=getSession().createCriteria(Category.class);
+        Criteria criteria = getSession().createCriteria(Category.class);
         return criteria.list();
- 
+
     }
+
     public static void main(String[] args) {
-        CategoryDaoImpl s=new CategoryDaoImpl();
-        System.out.println(s.getAllCategorys().size());
+        CategoryDaoImpl s = new CategoryDaoImpl();
+        System.out.println("****" + s.getAllCategorys().size());
     }
 }
