@@ -45,4 +45,30 @@ public class UserDaoImpl extends AbstractDao<Integer, Users> implements Serializ
         }
         return users;
     }
+
+    @Override
+    public Criteria createEntityCriteria() {
+        return super.createEntityCriteria(); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void delete(Users entity) {
+        super.delete(entity); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void update(Users entity) {
+        super.update(entity); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void persist(Users entity) {
+        super.persist(entity); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Users getByKey(Integer key) {
+        return super.getByKey(key); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

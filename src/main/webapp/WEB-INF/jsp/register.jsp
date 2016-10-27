@@ -42,9 +42,9 @@
 
                 <spring:bind path="firstName">
                     <div class="form-group ${status.error ? 'has-error' : ''}">
-                        <label for="firstName" class="col-md-3 control-label">FirstName</label>
+                        <label for="firstName" class="col-md-3 control-label">Adınız</label>
                         <div class="col-md-9">
-                            <form:input path="firstName" type="text"  class="form-control "  placeholder="FirstName" />
+                            <form:input path="firstName" type="text"  class="form-control "  placeholder="Adınız" />
                             <form:errors path="firstName" class="control-label" />
                         </div>
                     </div>
@@ -52,9 +52,9 @@
 
                 <spring:bind path="lastName">
                     <div class="form-group ${status.error ? 'has-error' : ''}">
-                        <label for="lastName" class="col-md-3 control-label">LastName</label>
+                        <label for="lastName" class="col-md-3 control-label">Soyadınız</label>
                         <div class="col-md-9">
-                            <form:input path="lastName" type="text"  class="form-control "  placeholder="LastName" />
+                            <form:input path="lastName" type="text"  class="form-control "  placeholder="Soyadınız" />
                             <form:errors path="lastName" class="control-label" />
                         </div>
                     </div>
@@ -62,9 +62,9 @@
 
                 <spring:bind path="passwd">
                     <div class="form-group ${status.error ? 'has-error' : ''}">
-                        <label for="passwd" class="col-md-3 control-label">Password</label>
+                        <label for="passwd" class="col-md-3 control-label">Şifrə</label>
                         <div class="col-md-9">
-                            <form:input path="passwd" type="password"  class="form-control "  placeholder="Password" />
+                            <form:input path="passwd" type="password"  class="form-control "  placeholder="Şifrə" />
                             <form:errors path="passwd" class="control-label" />
                         </div>
                     </div>
@@ -72,19 +72,34 @@
 
                 <spring:bind path="repasswd">
                     <div class="form-group ${status.error ? 'has-error' : ''}">
-                        <label for="repasswd" class="col-md-3 control-label">Re Password</label>
+                        <label for="repasswd" class="col-md-3 control-label">Təkrar Şifrə</label>
                         <div class="col-md-9">
-                            <form:input path="repasswd" type="password"  class="form-control "  placeholder="Re Password" />
+                            <form:input path="repasswd" type="password"  class="form-control "  placeholder="Təkrar Şifrə" />
                             <form:errors path="repasswd" class="control-label" />
                         </div>
                     </div>
                 </spring:bind>
 
+                <spring:bind path="gender">
+                    <div class="form-group ${status.error ? 'has-error' : ''}">
+                        <label for="gender" class="col-md-3 control-label">Cins</label>
+                        <div class="col-md-9">
+                            <form:select path="gender"  class="form-control " >
+                                <form:option value="">Seçim et</form:option>
+                                <form:option value="MALE">Kişi</form:option>
+                                <form:option value="FEMALE">Qadın</form:option>
+                            </form:select>
+                            <form:errors path="gender" class="control-label" />
+                        </div>
+                    </div>
+                </spring:bind>     
+              
+
                 <spring:bind path="phoneno">
                     <div class="form-group ${status.error ? 'has-error' : ''}">
-                        <label for="phoneno" class="col-md-3 control-label">Mobile</label>
+                        <label for="phoneno" class="col-md-3 control-label">Mobil</label>
                         <div class="col-md-9">
-                            <form:input path="phoneno" type="text"  class="form-control "  placeholder="Mobile" />
+                            <form:input path="phoneno" type="text"  class="form-control "  placeholder="Mobil" />
                             <form:errors path="phoneno" class="control-label" />
                         </div>
                     </div>
@@ -104,11 +119,22 @@
                     <div class="col-md-offset-3 col-md-9">
                         <!--<button id="btn-fbsignup" type="button"  class="btn btn-primary"><i class="icon-facebook"></i>   Sign Up with Facebook</button>-->
                         <a id="btn-fblogin" href="<c:url value="/facebook/signin"/>" class="btn btn-primary">
-                           Sign Up  with Facebook
-                    </a>
-                </div>    
-            </div>
-        </form:form>
+                            Sign Up  with Facebook
+                        </a>
+                    </div>    
+                </div>
+
+
+
+                <c:set scope="request"  var="er"><form:errors path="*"/></c:set>
+
+                <c:if test="${not empty er}">
+                    <script type="text/javascript">
+                        $('#loginbox').hide();
+                        $('#signupbox').show();
+                    </script>
+                </c:if>
+            </form:form>
+        </div>
     </div>
-</div>
 </div>

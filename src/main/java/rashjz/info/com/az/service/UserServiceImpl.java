@@ -7,6 +7,7 @@ package rashjz.info.com.az.service;
 
 import java.io.Serializable;
 import java.util.List;
+import org.hibernate.Criteria;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -32,6 +33,31 @@ public class UserServiceImpl implements Serializable, UserService {
     @Override
     public Users findByUsername(String username) {
         return userDao.findByUsername(username);
+    }
+
+    @Override
+    public Criteria createEntityCriteria() {
+        return userDao.createEntityCriteria();
+    }
+
+    @Override
+    public void delete(Users entity) {
+        userDao.delete(entity);
+    }
+
+    @Override
+    public void update(Users entity) {
+        userDao.update(entity);
+    }
+
+    @Override
+    public void persist(Users entity) {
+        userDao.persist(entity);
+    }
+
+    @Override
+    public Users getByKey(Integer key) {
+        return userDao.getByKey(key);
     }
 
 }

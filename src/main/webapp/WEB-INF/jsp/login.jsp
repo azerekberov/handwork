@@ -119,7 +119,8 @@
 
 
 
-        <spring:url value="/register" var="registerUrl"/>
+        <spring:url value="/register" scope="request" var="registerUrl"/>
+        
         <div class="container">
             <div id="loginbox" style="margin-top:15%; "  class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">                    
                 <div class="panel panel-primary" >

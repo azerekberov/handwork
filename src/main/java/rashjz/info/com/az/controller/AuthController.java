@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.util.HashSet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -65,9 +66,10 @@ public class AuthController implements Serializable {
     }
 
     @RequestMapping(value = "register", method = RequestMethod.POST)
-    public String makeSomeAction(@ModelAttribute("userReg") RegistrationForm form, BindingResult result, Model model, final RedirectAttributes redirectAttributes) {
-//        LOG.info("register - - - " + form.toString());
+    public String makeSomeAction(@Valid @ModelAttribute("userReg") RegistrationForm form, BindingResult result, Model model, final RedirectAttributes redirectAttributes) {
+        logger.info("register - - - " + form.toString()+" "+result.hasErrors());
         if (result.hasErrors()) {
+            logger.info("********* "+result.getObjectName()+" "+result.getFieldError().getField());
             return "login";
         } else {
             Users user = new Users();
@@ -85,7 +87,7 @@ public class AuthController implements Serializable {
             userRoleses.add(roles);
             user.setUserRolesCollection(userRoleses);
 
-//            userService.addUser(user);
+            userService.persist(user);
 
         }
            return "redirect:/login";
