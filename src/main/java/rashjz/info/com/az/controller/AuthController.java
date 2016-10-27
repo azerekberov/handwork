@@ -60,6 +60,7 @@ public class AuthController implements Serializable {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if (auth != null) {
             new SecurityContextLogoutHandler().logout(request, response, auth);
+            
         }
         //You can redirect wherever you want, but generally it's a good idea to show login screen again.
         return "redirect:/login?logout";
